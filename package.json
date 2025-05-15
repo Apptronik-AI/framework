@@ -1,0 +1,39 @@
+{
+  "name": "apptronik-ai",
+  "version": "1.0.0",
+  "description": "AI-powered crypto asset management framework",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "scripts": {
+    "build": "tsc",
+    "test": "jest",
+    "lint": "eslint src --ext .ts",
+    "prepublishOnly": "npm run build"
+  },
+  "keywords": ["crypto", "ai", "portfolio", "management", "blockchain", "trading", "automation"],
+  "author": "Floyd Perkins <dev@apptronik-ai.com>",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Apptronik-AI/framework.git"
+  },
+  "homepage": "https://apptronik-ai.com",
+  "dependencies": {
+    "node-fetch": "^2.6.9",
+    "crypto-js": "^4.1.1",
+    "decimal.js": "^10.4.3"
+  },
+  "devDependencies": {
+    "@types/node": "^18.15.11",
+    "@types/node-fetch": "^2.6.3",
+    "@types/crypto-js": "^4.1.1",
+    "@types/jest": "^29.5.0",
+    "typescript": "^5.0.4",
+    "jest": "^29.5.0",
+    "ts-jest": "^29.1.0",
+    "eslint": "^8.38.0",
+    "@typescript-eslint/eslint-plugin": "^5.59.0",
+    "@typescript-eslint/parser": "^5.59.0"
+  },
+  "files": ["dist", "LICENSE", "README.md"]
+}
