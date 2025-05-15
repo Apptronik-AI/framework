@@ -1,291 +1,218 @@
-# Apptronik AI
+**Apptronik AI** 🚀
 
-Apptronik AI helps you manage your crypto assets automatically, efficiently, and securely. Let our AI engine grow your portfolio while you focus on what matters.
+> **Automated, Intelligent, and Secure Crypto Portfolio Management**
 
-[![npm version](https://img.shields.io/npm/v/apptronik-ai.svg)](https://www.npmjs.com/package/apptronik-ai)
-[![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](https://opensource.org/licenses/MIT)
+[![npm version](https://img.shields.io/npm/v/apptronik-ai.svg)](https://www.npmjs.com/package/apptronik-ai) [![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](https://opensource.org/licenses/MIT)
 
-## Features
+---
 
-- 🤖 AI-powered portfolio management
-- 📊 Advanced market analysis
-- 🔄 Automated trading strategies
-- 📈 Performance tracking and optimization
-- 🔒 Secure API integration
-- 📱 Cross-platform compatibility
+## ⚡ What is Apptronik AI?
 
-## Installation
+Apptronik AI is your all-in-one solution for **automatic**, **efficient**, and **secure** crypto asset management. Let our cutting-edge AI engine analyze markets, optimize your portfolio, and execute trades—while you focus on what truly matters.
 
-\`\`\`bash
-npm install apptronik-ai
-\`\`\`
+## 📋 Table of Contents
 
-Or with yarn:
+1. [Features](#-features)
+2. [🚀 Quick Start](#-quick-start)
+3. [💾 Installation](#-installation)
+4. [🛠️ Usage Examples](#️-usage-examples)
 
-\`\`\`bash
-yarn add apptronik-ai
-\`\`\`
+   * [Portfolio Management](#portfolio-management)
+   * [AI Engine](#ai-engine)
+   * [Trading Engine](#trading-engine)
+   * [Market Analysis](#market-analysis)
+5. [⚙️ Configuration Options](#️-configuration-options)
+6. [🔧 Error Handling](#-error-handling)
+7. [🔒 Security](#-security)
+8. [🤝 Contributing](#-contributing)
+9. [📄 License](#-license)
+10. [📞 Support](#-support)
 
-## Quick Start
+---
 
-\`\`\`typescript
+## ✨ Features
+
+* 🤖 **AI-Powered Portfolio Management**: Intelligent asset allocation and dynamic rebalancing.
+* 📊 **Advanced Market Analysis**: Real-time data, trend detection, and risk assessment.
+* 🔄 **Automated Trading Strategies**: Execute buy/sell orders based on AI recommendations.
+* 📈 **Performance Tracking & Optimization**: Visualize growth, benchmark results, and fine-tune risk profiles.
+* 🔒 **Secure API Integration**: HMAC signatures, HTTPS encryption, and strict rate limiting.
+* 📱 **Cross-Platform Compatibility**: Works seamlessly in Node.js, browser, and serverless environments.
+
+---
+
+## 🚀 Quick Start
+
+```typescript
 import createApptronikAI from 'apptronik-ai';
 
-// Initialize the framework with your API credentials
-const apptronik = createApptronikAI({
-  apiKey: 'YOUR_API_KEY',
-  apiSecret: 'YOUR_API_SECRET'
-});
-
-// Create a new portfolio
-async function createPortfolio() {
-  const { success, data, error } = await apptronik.portfolio.create('My AI Portfolio');
-  
-  if (success && data) {
-    console.log('Portfolio created:', data);
-    return data.id;
-  } else {
-    console.error('Failed to create portfolio:', error);
-    return null;
-  }
-}
-
-// Get AI recommendations for your portfolio
-async function getRecommendations(portfolioId) {
-  const { success, data, error } = await apptronik.ai.getRecommendations(portfolioId);
-  
-  if (success && data) {
-    console.log('AI Recommendations:', data);
-    return data;
-  } else {
-    console.error('Failed to get recommendations:', error);
-    return null;
-  }
-}
-
-// Execute trades based on AI recommendations
-async function executeAITrades(portfolioId) {
-  const { success, data, error } = await apptronik.trading.executeRecommendedTrades(portfolioId);
-  
-  if (success && data) {
-    console.log('Trades executed:', data);
-    return data;
-  } else {
-    console.error('Failed to execute trades:', error);
-    return null;
-  }
-}
-\`\`\`
-
-## Documentation
-
-### Core Modules
-
-#### Portfolio Management
-
-\`\`\`typescript
-// Create a new portfolio
-const { data: portfolio } = await apptronik.portfolio.create('My Portfolio');
-
-// Get portfolio details
-const { data: portfolioDetails } = await apptronik.portfolio.get(portfolioId);
-
-// Add asset to portfolio
-const { data: asset } = await apptronik.portfolio.addAsset(portfolioId, 'BTC', 0.5);
-
-// Get portfolio performance
-const { data: performance } = await apptronik.portfolio.getPerformance(portfolioId, '1m');
-\`\`\`
-
-#### AI Engine
-
-\`\`\`typescript
-// Get market analysis
-const { data: marketAnalysis } = await apptronik.ai.analyzeMarket();
-
-// Get portfolio recommendations
-const { data: recommendations } = await apptronik.ai.getRecommendations(portfolioId);
-
-// Optimize portfolio
-const { data: optimizedPortfolio } = await apptronik.ai.optimizePortfolio(portfolio);
-
-// Predict asset price
-const { data: prediction } = await apptronik.ai.predictAssetPrice('BTC', '7d');
-\`\`\`
-
-#### Trading Engine
-
-\`\`\`typescript
-// Execute a trade
-const { data: trade } = await apptronik.trading.executeTrade(
-  portfolioId,
-  'ETH',
-  'buy',
-  1.5
-);
-
-// Get trade details
-const { data: tradeDetails } = await apptronik.trading.getTrade(tradeId);
-
-// Execute AI-recommended trades
-const { data: trades } = await apptronik.trading.executeRecommendedTrades(portfolioId);
-\`\`\`
-
-#### Market Analysis
-
-\`\`\`typescript
-// Get market data
-const { data: marketData } = await apptronik.analysis.getMarketData();
-
-// Get market trends
-const { data: trends } = await apptronik.analysis.getTrends();
-
-// Get asset details
-const { data: assetDetails } = await apptronik.analysis.getAssetDetails('BTC');
-
-// Analyze portfolio risk
-const { data: riskAnalysis } = await apptronik.analysis.analyzePortfolioRisk(portfolioId);
-\`\`\`
-
-### Configuration Options
-
-\`\`\`typescript
+// 1. Initialize the SDK
 const apptronik = createApptronikAI({
   apiKey: 'YOUR_API_KEY',
   apiSecret: 'YOUR_API_SECRET',
-  baseUrl: 'https://api.apptronik-ai.com', // Optional: API base URL
-  timeout: 30000, // Optional: API request timeout in ms
-  riskLevel: 'medium', // Optional: 'low', 'medium', or 'high'
-  tradingEnabled: false, // Optional: Enable/disable automated trading
-  maxAssets: 10, // Optional: Maximum number of assets in portfolio
-  rebalanceInterval: 86400000, // Optional: Rebalance interval in ms (24h default)
-  aiModelVersion: 'v1' // Optional: AI model version to use
 });
-\`\`\`
 
-## Examples
+(async () => {
+  // 2. Create a new portfolio
+  const { success, data, error } = await apptronik.portfolio.create('My AI Portfolio');
+  if (!success) return console.error('Error:', error?.message);
 
-### Creating and Managing a Portfolio
+  const portfolioId = data.id;
+  console.log('🎉 Portfolio created:', data);
 
-\`\`\`typescript
-import createApptronikAI from 'apptronik-ai';
+  // 3. Get AI recommendations
+  const rec = await apptronik.ai.getRecommendations(portfolioId);
+  console.log('🔮 AI Recommendations:', rec.data);
 
-async function managePortfolio() {
-  const apptronik = createApptronikAI({
-    apiKey: 'YOUR_API_KEY',
-    apiSecret: 'YOUR_API_SECRET'
-  });
+  // 4. Execute trades
+  const trades = await apptronik.trading.executeRecommendedTrades(portfolioId);
+  console.log('✅ Trades executed:', trades.data);
+})();
+```
 
-  // Create a new portfolio
-  const { data: portfolio } = await apptronik.portfolio.create('Growth Portfolio');
-  const portfolioId = portfolio.id;
+---
 
-  // Add assets to the portfolio
-  await apptronik.portfolio.addAsset(portfolioId, 'BTC', 0.5);
-  await apptronik.portfolio.addAsset(portfolioId, 'ETH', 5);
-  await apptronik.portfolio.addAsset(portfolioId, 'SOL', 20);
+## 💾 Installation
 
-  // Get portfolio details
-  const { data: updatedPortfolio } = await apptronik.portfolio.get(portfolioId);
-  console.log('Portfolio value:', updatedPortfolio.totalValue);
-  console.log('Assets:', updatedPortfolio.assets);
+Install via npm:
 
-  // Get AI recommendations
-  const { data: recommendations } = await apptronik.ai.getRecommendations(portfolioId);
-  console.log('AI Recommendations:', recommendations);
+```bash
+npm install apptronik-ai
+```
 
-  // Execute recommended trades if trading is enabled
-  if (recommendations.action !== 'hold') {
-    const { data: trades } = await apptronik.trading.executeRecommendedTrades(portfolioId);
-    console.log('Executed trades:', trades);
-  }
-}
+Or using Yarn:
 
-managePortfolio().catch(console.error);
-\`\`\`
+```bash
+yarn add apptronik-ai
+```
+
+---
+
+## 🛠️ Usage Examples
+
+### Portfolio Management
+
+```typescript
+// Create & fetch portfolios
+const { data: portfolio } = await apptronik.portfolio.create('Growth Portfolio');
+const { data: details } = await apptronik.portfolio.get(portfolio.id);
+
+// Add assets
+await apptronik.portfolio.addAsset(portfolio.id, 'BTC', 0.5);
+
+// Performance metrics
+tconst perf = await apptronik.portfolio.getPerformance(portfolio.id, '1m');
+console.log(perf.data);
+```
+
+### AI Engine
+
+```typescript
+// Market analysis & predictions
+const market = await apptronik.ai.analyzeMarket();
+const recs = await apptronik.ai.getRecommendations(portfolio.id);
+const optimized = await apptronik.ai.optimizePortfolio(portfolio);
+const predict = await apptronik.ai.predictAssetPrice('ETH', '7d');
+```
+
+### Trading Engine
+
+```typescript
+// Place a manual trade
+const trade = await apptronik.trading.executeTrade(portfolio.id, 'SOL', 'buy', 10);
+
+// Execute AI-driven trades
+tconst aiTrades = await apptronik.trading.executeRecommendedTrades(portfolio.id);
+```
 
 ### Market Analysis
 
-\`\`\`typescript
-import createApptronikAI from 'apptronik-ai';
+```typescript
+// Retrieve market data & trends
+const data = await apptronik.analysis.getMarketData();
+const trends = await apptronik.analysis.getTrends();
 
-async function analyzeMarket() {
-  const apptronik = createApptronikAI({
-    apiKey: 'YOUR_API_KEY',
-    apiSecret: 'YOUR_API_SECRET'
-  });
+// Risk assessment
+const risk = await apptronik.analysis.analyzePortfolioRisk(portfolio.id);
+```
 
-  // Get current market data
-  const { data: marketData } = await apptronik.analysis.getMarketData();
-  console.log('Top assets by market cap:', marketData.assets.slice(0, 5));
+---
 
-  // Get market trends
-  const { data: trends } = await apptronik.analysis.getTrends();
-  console.log('Current market trends:', trends);
+## ⚙️ Configuration Options
 
-  // Get correlation between assets
-  const { data: correlation } = await apptronik.analysis.getCorrelationMatrix(
-    ['BTC', 'ETH', 'SOL', 'ADA', 'DOT']
-  );
-  console.log('Asset correlation matrix:', correlation);
+Customize the SDK on init:
 
-  // Get price prediction for Bitcoin
-  const { data: prediction } = await apptronik.ai.predictAssetPrice('BTC', '30d');
-  console.log('Bitcoin price prediction (30 days):', prediction);
-}
+```typescript
+const apptronik = createApptronikAI({
+  apiKey: 'KEY',
+  apiSecret: 'SECRET',
+  baseUrl: 'https://api.apptronik-ai.com',  // Default
+  timeout: 30000,                           // ms
+  riskLevel: 'medium',                      // 'low' | 'medium' | 'high'
+  tradingEnabled: true,                     // Enable auto trading
+  maxAssets: 10,                            // Max assets per portfolio
+  rebalanceInterval: 24 * 60 * 60 * 1000,   // 24h in ms
+  aiModelVersion: 'v1',                     // Select AI model
+});
+```
 
-analyzeMarket().catch(console.error);
-\`\`\`
+---
 
-## Error Handling
+## 🔧 Error Handling
 
-All API methods return a consistent response structure:
+All methods return a consistent `ApiResponse<T>`:
 
-\`\`\`typescript
+```typescript
 interface ApiResponse<T> {
   success: boolean;
   data?: T;
-  error?: {
-    code: string;
-    message: string;
-    details?: any;
-  };
+  error?: { code: string; message: string; details?: any };
 }
-\`\`\`
+```
 
-Example of proper error handling:
+Handle errors gracefully:
 
-\`\`\`typescript
-const response = await apptronik.portfolio.create('My Portfolio');
-
-if (response.success && response.data) {
-  // Handle successful response
-  const portfolio = response.data;
-  console.log('Portfolio created:', portfolio);
-} else {
-  // Handle error
-  console.error('Error:', response.error?.message);
-  
-  // Take action based on error code
-  if (response.error?.code === 'AUTHENTICATION_FAILED') {
-    // Handle authentication error
+```typescript
+const res = await apptronik.portfolio.create('My Portfolio');
+if (!res.success) {
+  console.error('⚠️ Error:', res.error?.message);
+  if (res.error?.code === 'AUTH_FAILED') {
+    // handle auth
   }
 }
-\`\`\`
+```
 
-## Security
+---
 
-Apptronik AI uses industry-standard security practices:
+## 🔒 Security
 
-- All API requests are encrypted using HTTPS
-- API keys and secrets are required for authentication
-- HMAC signatures are used to verify request integrity
-- Rate limiting is enforced to prevent abuse
+* **HTTPS & HMAC**: All requests are signed and encrypted.
+* **Rate Limiting**: Prevent abuse and ensure stability.
+* **Environment Safe**: Compatible with serverless, Node.js, and browser.
 
-## License
+---
 
-This project is licensed under the MIT License - see the LICENSE file for details.
+## 🤝 Contributing
 
-## Support
+Contributions are welcome! Please fork the repo, create a feature branch, and submit a pull request.
 
-For support, please contact us at support@apptronik-ai.com or visit our website at [https://apptronik-ai.com](https://apptronik-ai.com).
+1. Fork it!
+2. Create your feature branch: `git checkout -b feature/my-awesome-feature`
+3. Commit your changes: `git commit -m 'Add new feature'`
+4. Push to the branch: `git push origin feature/my-awesome-feature`
+5. Submit a Pull Request
+
+---
+
+## 📄 License
+
+This project is licensed under the **MIT License**. See the [LICENSE](LICENSE) file for details.
+
+---
+
+## 📞 Support
+
+Need help? Reach out:
+
+* 📧 Email: [support@apptronik-ai.com](mailto:support@apptronik-ai.com)
+* 🌐 Website: [https://apptronik-ai.com](https://apptronik-ai.com)
